@@ -31,7 +31,7 @@ jobs:
       - name: Run a one-line script
         run: |
           echo $(date --help)
-          dNow=$(date -Iseconds -d "1 minute after")
+          dNow=$(date -Iseconds)
           dThen=$(date -Iseconds -d "1 minute ago")
           echo $dNow
           echo $dThen
