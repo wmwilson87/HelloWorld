@@ -30,7 +30,7 @@ jobs:
         run:
           vers="Accept:application/vnd.github.v3+json"
           commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits" -H $vers --verbose)
-          echo $commits
+          awk '{print}' $commits
           echo $vers
           echo commits
           echo vers
