@@ -30,7 +30,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          dNow=$(date -Iseconds -d "1 minute from now")
+          dNow=$(date -Iseconds -d "1 minute after")
           dThen=$(date -Iseconds -d "1 minute ago")
           echo $dNow
           echo $dThen
