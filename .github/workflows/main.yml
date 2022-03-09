@@ -28,6 +28,7 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run:
+          echo '{"type":"Bar","id":"1","title":"Foo"}' | python -m json.tool
           vers="Accept:application/vnd.github.v3+json"
           commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits" -H $vers | python -m json.tool)
           echo $commits
