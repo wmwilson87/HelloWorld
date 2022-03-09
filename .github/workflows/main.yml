@@ -30,15 +30,15 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          echo $(date --help)
+          #echo $(date --help)
           dNow=$(date -Iseconds)
           dThen=$(date -Iseconds -d "1 minute ago")
           echo $dNow
           echo $dThen
           vers="Accept:application/vnd.github.v3+json"
-          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
-          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}" -H $vers)
+          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
+          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}" -H $vers)
           #commitsSHAs=$(jq -n "${commits}" | jq -r 'map(.html_url)')
           #echo $(jq -n "${commitsSHAs}")
           [ $(jq -n "${commits}" | jq length) -eq 0 ] && echo "No recent commits found"
-          echo $(jq -n "${commits}")
+          echo $(jq -n ${commits})
