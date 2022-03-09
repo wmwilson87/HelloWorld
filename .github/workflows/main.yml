@@ -33,10 +33,10 @@ jobs:
           dNow=$(date)
           dThen=$(date -d "1 hour ago")
           vers="Accept:application/vnd.github.v3+json"
-          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
-          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers)
-          commitsSHAs=$(jq -n "${commits}" | jq -r 'map(.html_url)')
-          echo $(jq -n "${commitsSHAs}")
+          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
+          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers)
+          #commitsSHAs=$(jq -n "${commits}" | jq -r 'map(.html_url)')
+          #echo $(jq -n "${commitsSHAs}")
           echo $(jq -n "${commits}")
 
       # Runs a set of commands using the runners shell
