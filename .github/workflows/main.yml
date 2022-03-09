@@ -30,8 +30,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          dNow=$(date)
-          dThen=$(date -d "1 hour ago")
+          dNow=$(date -Iseconds -u)
+          dThen=$(date -Iseconds -u -d "1 hour ago")
           vers="Accept:application/vnd.github.v3+json"
           commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
           #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers)
