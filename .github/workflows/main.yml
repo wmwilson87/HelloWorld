@@ -31,7 +31,7 @@ jobs:
       - name: Run a one-line script
         run: |
           dNow=$(date -Iseconds)
-          dThen=$(date -Iseconds -d "1 hour ago")
+          dThen=$(date -Iseconds -d "2 days ago")
           echo $dNow
           echo $dThen
           vers="Accept:application/vnd.github.v3+json"
@@ -41,9 +41,3 @@ jobs:
           #echo $(jq -n "${commitsSHAs}")
           [ $(jq -n "${commits}" | jq length) -eq 0 ] && echo "No recent commits found"
           echo $(jq -n "${commits}")
-
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
