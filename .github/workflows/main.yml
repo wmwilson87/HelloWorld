@@ -32,6 +32,8 @@ jobs:
         run: |
           dNow=$(date -Iseconds -u)
           dThen=$(date -Iseconds -u -d "1 hour ago")
+          echo $dNow
+          echo $dThen
           vers="Accept:application/vnd.github.v3+json"
           commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
           #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=${dNow}" -H $vers)
