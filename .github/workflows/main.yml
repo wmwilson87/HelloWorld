@@ -31,7 +31,7 @@ jobs:
       - name: Run a one-line script
         run: |
           dNow=$(date -Iseconds)
-          dThen=$(date -Iseconds -d "5 minutes ago")
+          dThen=$(date -Iseconds -d "1 minute ago")
           echo $dNow
           echo $dThen
           vers="Accept:application/vnd.github.v3+json"
