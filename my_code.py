@@ -27,4 +27,24 @@ if len(sys.argv) >= 1:
 else:
   print("sha not included.")
 
-
+  
+for tF in touchedFiles:
+  tF_split = tF.split("/")
+  if len(tF_split) >= 1:
+    full_tF = os.path.join(tF_split[0], tF_split[1])
+    potential = ""
+    if "games" in tF_split[0]:
+      print("this is a game: '%s'"%tF_split[1])
+      potential = r"2. Implementation\14. Data\TP_config.json"
+    elif "casino" in tF_split[0]:
+      print("this is a casino: '%s'"%tF_split[1])
+      potential = r"2. Implementation\14. Data\TP_config.json"
+    else:
+      print("this isn't valid and should be ignored.")
+    
+    full_tF = os.path.join(full_tF, potential)
+    print(full_tF)
+    if not os.path.exists(full_tF):
+      print("TP_config file not found.  should make one?")
+    else:
+      print("TP_config file found.  does contain this file in assets?")
