@@ -19,9 +19,6 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
-      with:
-        repository: wmwilson87/HelloWorld_link
-        path: HelloWorld_link
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
