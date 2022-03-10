@@ -36,8 +36,8 @@ jobs:
           echo $dNow
           echo $dThen
           vers="Accept:application/vnd.github.v3+json"
-          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
-          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}" -H $vers)
+          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=$(dNow)" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
+          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=$(dNow)" -H $vers)
           [ $(jq -n "${commits}" | jq length) -eq 0 ] && echo "No recent commits found"
           commitsSHAs=$(jq -n "${commits}" | jq -r 'map(.html_url)')
           echo $(jq -n "${commitsSHAs}")
