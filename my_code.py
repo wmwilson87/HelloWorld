@@ -12,7 +12,7 @@ if len(sys.argv) >= 1:
   touchedFiles = []
   receive = requests.get(url)
   if receive.status_code == 200:
-    ret = recieve.json()
+    ret = receive.json()
     if "author" in ret.keys() and "login" in ret["author"]:
       author = ret["author"]["login"]
     if "files" in ret.keys():
