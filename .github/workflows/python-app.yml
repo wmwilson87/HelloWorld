@@ -6,8 +6,9 @@ name: Python application
 on:
   push:
     branches: [ master ]
-    paths-ignore:
-      - '.github/workflows/**'
+    paths:
+      - '!.github/workflows/**'
+      - 'games/**'
   pull_request:
     branches: [ master ]
 
