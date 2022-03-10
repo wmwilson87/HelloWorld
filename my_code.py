@@ -32,7 +32,7 @@ for tF in touchedFiles:
   tF_split = tF.split("/")
   if len(tF_split) >= 1:
     full_tF = os.path.join(tF_split[0], tF_split[1])
-    if full_tF not in touchedDirs: touhedDirs.append(full_tF)   
+    if full_tF not in touchedDirs: touchedDirs.append(full_tF)   
     potential = ""
     if "games" in tF_split[0]:
       print("this is a game: '%s'"%tF_split[1])
