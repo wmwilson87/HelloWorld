@@ -22,9 +22,8 @@ if len(sys.argv) >= 1:
     print("\n\n'%s' modified files [\n%s\n]" %(author, ',\n'.join(touchedFiles)))
     
   else:
-    print("url: '%s' error in request. ending." %url)
+    print("url: '%s' error in request." %url)
 else:
-  print("sha not included. ending.")
-  return -1
+  print("sha not included.")
 
 
