@@ -1,5 +1,6 @@
 import sys
 import requests
+import os
 
 print('Number of arguments:', len(sys.argv), 'arguments.')
 print('Argument List:', str(sys.argv))
@@ -17,7 +18,7 @@ if len(sys.argv) >= 1:
       author = ret["author"]["login"]
     if "files" in ret.keys():
       for f in ret["files"]:
-        if "filename" in f: touchedFiles.append(f["filename"])
+        if "filename" in f: touchedFiles.append(f["filename"] + " %s"%(os.path.exists(f["filename"])))
     
     print("\n\n%s modified files [\n%s\n]" %(author, ',\n'.join(touchedFiles)))
     
