@@ -19,7 +19,7 @@ if len(sys.argv) >= 1:
       for f in ret["files"]:
         if "filename" in f: touchedFiles.append(f["filename"])
     
-    print("\n\n'%s' modified files [\n%s\n]" %(author, ',\n'.join(touchedFiles)))
+    print("\n\n%s modified files [\n%s\n]" %(author, ',\n'.join(touchedFiles)))
     
   else:
     print("url: '%s' error in request." %url)
