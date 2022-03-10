@@ -3,22 +3,29 @@
 name: CI
 
 # Controls when the workflow will run
-#on:
+on:
   # Triggers the workflow on push or pull request events but only for the master branch
-  #push:
-    #branches: [ master ]
-    #paths-ignore:
-     # - 'workflows/**'
-  #pull_request:
-   # branches: [ master ]
+  push:
+    branches: [ master ]
+    paths-ignore:
+      - 'workflows/**'
+  pull_request:
+    branches: [ master ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
+  build1:
+    runs-on: 'node16'
+    steps:
+      - uses: actions/checkout@v2
+      - name: Run some JS code
+        run: |
+          main: 'testAction.js'
   # This workflow contains a single job called "build"
-  build:
+  build2:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -35,10 +42,12 @@ jobs:
           dThen=$(date -Iseconds -d "1 minute ago")
           echo $dNow
           echo $dThen
-          vers="Accept:application/vnd.github.v3+json"
-          commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=$(dNow)" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
-          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=$(dNow)" -H $vers)
-          [ $(jq -n "${commits}" | jq length) -eq 0 ] && echo "No recent commits found"
-          commitsSHAs=$(jq -n "${commits}" | jq -r 'map(.html_url)')
-          echo $(jq -n "${commitsSHAs}")
-          echo $(jq -n ${commits})
+          #vers="Accept:application/vnd.github.v3+json"
+          #commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=$(dNow)" -H $vers | python -c "import sys, json; print(json.load(sys.stdin))")
+          ##commits=$(curl "https://api.github.com/repos/wmwilson87/HelloWorld/commits?since=${dThen}&until=$(dNow)" -H $vers)
+          #[ $(jq -n "${commits}" | jq length) -eq 0 ] && echo "No recent commits found"
+          #commitsSHAs=$(jq -n "${commits}" | jq -r 'map(.html_url)')
+          #echo $(jq -n "${commitsSHAs}")
+          #echo $(jq -n ${commits})
+      
+      
