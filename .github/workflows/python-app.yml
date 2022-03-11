@@ -46,4 +46,4 @@ jobs:
         cd assets
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
-        python ./assets/my_code.py $(git rev-parse "$GITHUB_SHA")
+        python my_code.py $(git rev-parse "$GITHUB_SHA")
