@@ -42,6 +42,9 @@ jobs:
         pip install requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+    - name: check repo status 1
+      run: echo $(git status)
+      
     - name: run some Python
       run: |
         cd assets
@@ -50,3 +53,6 @@ jobs:
         echo $repoName
         cd ../tools
         python pipeline/tpAssets_updates.py $repoName $sha
+        
+    - name: check repo status 2
+      run: echo $(git status)
