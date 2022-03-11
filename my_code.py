@@ -38,7 +38,7 @@ for tF in touchedFiles:
 for tD in touchedDirs:
     entry = []
     for tF in touchedFiles:
-        if tD in tF: entry.append(tD)
+        if tD in tF: entry.append(tF)
     touched[tD] = entry
 
 for key in touched:
