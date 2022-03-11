@@ -47,5 +47,5 @@ jobs:
         cd assets
         sha=$(git rev-parse "$GITHUB_SHA")
         repoName=$(git rev-parse "$GITHUB_REPOSITORY")
-        #cd ../tools
-        python ../tools/pipeline/tpAssets_updates.py $repoName $sha
+        cd ../tools
+        python pipeline/tpAssets_updates.py $repoName $sha
