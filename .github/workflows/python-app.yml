@@ -20,9 +20,15 @@ jobs:
     
     steps:
     - uses: actions/checkout@v2
+      with:
+        repository: wmwilson87/HelloWorld_link
+        ref: refs/heads/master
+        path: ./assets
+    - uses: actions/checkout@v2
       with: 
         repository: wmwilson87/HelloWorld_link
         ref: refs/heads/main
+        path: ./tools
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
@@ -33,9 +39,10 @@ jobs:
         #pip install flake8 pytest
         pip install requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Show working directory
+      run: ls
     - name: run some Python
       run: |
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
-        echo $(git ls-files --full-name)
         #python my_code.py $(git rev-parse "$GITHUB_SHA")
