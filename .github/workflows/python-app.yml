@@ -48,5 +48,5 @@ jobs:
         echo $sha
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
-        cd ..\tools
+        cd ../tools
         python pipeline\tpAssets_updates.py $sha
