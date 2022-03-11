@@ -31,4 +31,7 @@ jobs:
         pip install requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: run some Python
-      run: python my_code.py $(git rev-parse "$GITHUB_SHA")
+      run: |
+        echo $(git rev-parse "$GITHUB_WORKSPACE")
+        echo $(git rev-parse "$GITHUB_REPOSITORY")
+        python my_code.py $(git rev-parse "$GITHUB_SHA")
