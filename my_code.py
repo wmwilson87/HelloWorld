@@ -62,5 +62,6 @@ for key in touched:
       print("TP_config file found.  does contain this file in assets?")
     
     for tf in touched[key]:
-        print("'%s' exists: %s"%(touched[key], os.path.exists(touched[key])))
+        for every in tf:
+            print("'%s' exists: %s"%(every, os.path.exists(every)))
     
