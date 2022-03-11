@@ -7,7 +7,7 @@ on:
   push:
     branches: [ master ]
     paths:
-      - '!.github/workflows/**'
+      - '!.github/**'
       - 'games/**'
       - '!games/**/TP_config.json'
   pull_request:
@@ -19,11 +19,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+    - name: chekout assets repo
     - uses: actions/checkout@v2
       with:
         repository: wmwilson87/HelloWorld
         ref: refs/heads/master
         path: ./assets
+    - name: chekout tools repo
     - uses: actions/checkout@v2
       with: 
         repository: wmwilson87/HelloWorld_link
@@ -39,14 +41,10 @@ jobs:
         #pip install flake8 pytest
         pip install requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-    - name: Show working directory
-      run: ls -R
     - name: run some Python
       run: |
         cd assets
         sha=$(git rev-parse "$GITHUB_SHA")
-        echo $sha
-        echo $(git rev-parse "$GITHUB_WORKSPACE")
-        echo $(git rev-parse "$GITHUB_REPOSITORY")
-        cd ../tools
-        python pipeline/tpAssets_updates.py $sha
+        repoName=$(git rev-parse "$GITHUB_REPOSITORY")
+        #cd ../tools
+        python ../tools/pipeline/tpAssets_updates.py $repoName $sha
