@@ -21,8 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        repository: wmwilson87/HelloWorld_link
-        ref: refs/heads/main
+        repository: wmwilson87/HelloWorld
+        ref: refs/heads/master
         path: ./assets
     - uses: actions/checkout@v2
       with: 
@@ -40,10 +40,10 @@ jobs:
         pip install requests
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Show working directory
-      run: ls -Rla
+      run: ls -R
     - name: run some Python
       run: |
         cd assets
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
-        #python my_code.py $(git rev-parse "$GITHUB_SHA")
+        python ./assets/my_code.py $(git rev-parse "$GITHUB_SHA")
