@@ -19,9 +19,10 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-    - name: get tools repo
-      uses: wmwilson87/HelloWorld_link@4f52d315f096b186f7b839ec9dbc71481ca4bcbc
     - uses: actions/checkout@v2
+      with: 
+        repository: wmwilson87/HelloWorld_link@main
+        path: tools
     - name: Set up Python 3.10
       uses: actions/setup-python@v2
       with:
