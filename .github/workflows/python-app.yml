@@ -44,6 +44,9 @@ jobs:
     - name: run some Python
       run: |
         cd assets
+        sha=$(git rev-parse "$GITHUB_SHA")
+        echo $sha
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
-        python my_code.py $(git rev-parse "$GITHUB_SHA")
+        cd ..\tools
+        python tpAssets_updates.py $sha
