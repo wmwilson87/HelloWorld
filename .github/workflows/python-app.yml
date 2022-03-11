@@ -34,4 +34,5 @@ jobs:
       run: |
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
+        echo $(git ls-files --full-name)
         python my_code.py $(git rev-parse "$GITHUB_SHA")
