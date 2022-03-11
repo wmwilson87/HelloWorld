@@ -43,6 +43,7 @@ jobs:
       run: ls
     - name: run some Python
       run: |
+        cd assets
         echo $(git rev-parse "$GITHUB_WORKSPACE")
         echo $(git rev-parse "$GITHUB_REPOSITORY")
         #python my_code.py $(git rev-parse "$GITHUB_SHA")
