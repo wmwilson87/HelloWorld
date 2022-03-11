@@ -46,6 +46,8 @@ jobs:
       run: |
         cd assets
         sha=$(git rev-parse "$GITHUB_SHA")
-        repoName=$(git rev-parse "$GITHUB_REPOSITORY")
+        #repoName=$(git rev-parse "$GITHUB_REPOSITORY")
+        repoName=$(git config --get remote.origin.url | sed -e 's/^git@.*:\([[:graph:]]*\).git/\1/')
+        echo $repoName
         cd ../tools
         python pipeline/tpAssets_updates.py $repoName $sha
