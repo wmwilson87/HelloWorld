@@ -22,7 +22,7 @@ jobs:
     - uses: actions/checkout@v2
       with:
         repository: wmwilson87/HelloWorld_link
-        ref: refs/heads/master
+        ref: refs/heads/main
         path: ./assets
     - uses: actions/checkout@v2
       with: 
