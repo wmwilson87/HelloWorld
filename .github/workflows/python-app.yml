@@ -60,6 +60,8 @@ jobs:
       run: |
         cd assets
         echo $(git status)
+        git config user.email "wwilson@designworksgaming.com"
+        git config user.name "Wesley Wilson"
         git add .
-        git commit -a -m "generic commit message 1" --author="wwilson@designworksgaming.com"
+        git commit -a -m "generic commit message 1"
         git push -u origin main
