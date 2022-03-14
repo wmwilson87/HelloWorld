@@ -60,3 +60,6 @@ jobs:
       run: |
         cd assets
         echo $(git status)
+        git add .
+        git commit -a -m "generic commit message 1"
+        git push -u origin main
