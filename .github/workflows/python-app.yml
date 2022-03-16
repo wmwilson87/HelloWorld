@@ -47,7 +47,6 @@ jobs:
         cd assets
         sha=$(git rev-parse "$GITHUB_SHA")
         repoName=$(git config --get remote.origin.url | sed -e 's/^git@.*:\([[:graph:]]*\).git/\1/')
-        jira
         echo $repoName
         cd ../tools
         python pipeline/tpAssets_updates.py $repoName $sha ${{ secrets.TESTINGSECRET_01_03162022 }}
